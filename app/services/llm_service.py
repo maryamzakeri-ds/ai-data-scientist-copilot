@@ -18,9 +18,7 @@ def ask_llm(prompt: str) -> str:
                 'role': 'system',
                 'content': """
                     You are an AI Data Scientist Copilot.
-                    Your job is to help users analyze datasets.
-                    Be accurate and explain your reasoning clearly.
-                    Do not invent data or assume information that is not provided.
+                    Help users analyze datasets and answer their questions.
                 """
             },
             {
@@ -30,8 +28,8 @@ def ask_llm(prompt: str) -> str:
         ],
         temperature=0
     )
-    content = response.choices[0].message.content
-    return json.loads(content)
+
+    return response.choices[0].message.content
 
 def build_prompt(question, metadata):
     prompt = f"""
